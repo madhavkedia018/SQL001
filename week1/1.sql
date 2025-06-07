@@ -8,3 +8,4 @@ SELECT
 FROM Sales.Customer c
 LEFT JOIN Person.Person p ON c.PersonID = p.BusinessEntityID
 LEFT JOIN Sales.Store s ON c.StoreID = s.BusinessEntityID;
+ORDER BY c.CustomerID
