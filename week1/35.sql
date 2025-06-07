@@ -9,7 +9,7 @@ LEFT JOIN Sales.SalesOrderDetail sod ON p.ProductID = sod.ProductID
         SELECT 1 
         FROM Sales.SalesOrderHeader soh 
         WHERE soh.SalesOrderID = sod.SalesOrderID
-          AND soh.Status IN (1,2,3,4) -- open order statuses
+          AND soh.Status IN (1,2,3,4)
     )
 GROUP BY p.ProductID, p.Name
 HAVING SUM(pi.Quantity) < 10 AND COUNT(sod.SalesOrderID) = 0
