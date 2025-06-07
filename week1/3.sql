@@ -11,4 +11,5 @@ LEFT JOIN Person.Person p ON c.PersonID = p.BusinessEntityID
 LEFT JOIN Sales.Store s ON c.StoreID = s.BusinessEntityID
 JOIN Person.BusinessEntityAddress bea ON c.PersonID = bea.BusinessEntityID
 JOIN Person.Address a ON bea.AddressID = a.AddressID
-WHERE a.City IN ('London', 'Berlin');
+WHERE a.City IN ('London', 'Berlin')
+ORDER BY c.CustomerID
