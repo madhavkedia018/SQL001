@@ -9,4 +9,5 @@ SELECT
 FROM Sales.Customer c
 JOIN Person.Person p ON c.PersonID = p.BusinessEntityID
 JOIN Sales.Store s ON c.StoreID = s.BusinessEntityID
-WHERE s.Name LIKE '%n';
+WHERE s.Name LIKE '%n'
+ORDER BY c.CustomerID
