@@ -1,4 +1,4 @@
-SELECT 
+SELECT DISTINCT
     c.CustomerID,
      CASE 
         WHEN c.PersonID IS NOT NULL THEN p.FirstName + ' ' + p.LastName
