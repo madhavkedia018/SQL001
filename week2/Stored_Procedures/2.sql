@@ -6,14 +6,13 @@ CREATE PROCEDURE UpdateOrderDetails
     @Discount REAL = NULL
 AS
 BEGIN
-    -- Only update what is provided (not NULL)
     
     -- Update UnitPrice if provided
     IF @UnitPrice IS NOT NULL
     BEGIN
         UPDATE OrderDetails
         SET UnitPrice = @UnitPrice
-        WHERE OrderID = @OrderID AND ProductID = @ProductID;
+        WHERE OrderID = @OrderID AND ProductID = @ProductID
     END
 
     -- Update Quantity if provided
@@ -21,12 +20,12 @@ BEGIN
     BEGIN
         SELECT @OldQuantity = Quantity
         FROM OrderDetails
-        WHERE OrderID = @OrderID AND ProductID = @ProductID;
+        WHERE OrderID = @OrderID AND ProductID = @ProductID
 
         -- Update OrderDetails
         UPDATE OrderDetails
         SET Quantity = @Quantity
-        WHERE OrderID = @OrderID AND ProductID = @ProductID;
+        WHERE OrderID = @OrderID AND ProductID = @ProductID
 
         -- Adjust stock: Add back old, subtract new
         UPDATE Products
@@ -39,6 +38,6 @@ BEGIN
     BEGIN
         UPDATE OrderDetails
         SET Discount = @Discount
-        WHERE OrderID = @OrderID AND ProductID = @ProductID;
+        WHERE OrderID = @OrderID AND ProductID = @ProductID
     END
 END
