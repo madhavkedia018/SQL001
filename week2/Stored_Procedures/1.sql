@@ -19,9 +19,7 @@ BEGIN
     FROM Products
     WHERE ProductID = @ProductID
 
-    IF @CurrentStock IS NULL OR @CurrentStock < @Quantity RETURN
-    ELSE
-        BEGIN
+    IF @CurrentStock IS NULL OR @CurrentStock < @Quantity RETURN -1;
             INSERT INTO OrderDetails (OrderID, ProductID, UnitPrice, Quantity, Discount)
             VALUES (@OrderID, @ProductID, @UnitPrice, @Quantity, @Discount)
 
@@ -41,5 +39,5 @@ BEGIN
                       IF @NewStock < @ReorderLevel
                           PRINT 'Warning: Stock for this product has dropped below the reorder level.'
                END
-        END
+
 END
