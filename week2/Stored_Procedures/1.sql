@@ -19,7 +19,8 @@ BEGIN
     FROM Products
     WHERE ProductID = @ProductID
 
-    IF @CurrentStock IS NOT NULL AND @CurrentStock >= @Quantity
+    IF @CurrentStock IS NULL OR @CurrentStock < @Quantity RETURN
+    ELSE
         BEGIN
             INSERT INTO OrderDetails (OrderID, ProductID, UnitPrice, Quantity, Discount)
             VALUES (@OrderID, @ProductID, @UnitPrice, @Quantity, @Discount)
