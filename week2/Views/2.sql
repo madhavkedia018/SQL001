@@ -15,3 +15,7 @@ JOIN Production.Product p ON sod.ProductID = p.ProductID
 JOIN Sales.Store s ON c.StoreID = s.BusinessEntityID
 WHERE 
     CAST(soh.OrderDate AS DATE) = CAST(DATEADD(DAY, -1, GETDATE()) AS DATE)
+
+
+    
+SELECT * FROM vwCustomerOrders
