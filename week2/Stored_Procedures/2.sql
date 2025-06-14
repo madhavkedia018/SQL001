@@ -30,7 +30,7 @@ BEGIN
         -- Adjust stock: Add back old, subtract new
         UPDATE Products
         SET UnitsInStock = UnitsInStock + @OldQuantity - @Quantity
-        WHERE ProductID = @ProductID;
+        WHERE ProductID = @ProductID
     END
 
     -- Update Discount if provided
