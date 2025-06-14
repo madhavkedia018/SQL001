@@ -1,8 +1,8 @@
 CREATE VIEW vwCustomerOrders AS
 SELECT 
-    s.Name AS CompanyName,
+    v.Name AS CompanyName, -- Supplier name
     soh.SalesOrderID AS OrderID,
-    soh.OrderDate,
+    CAST(soh.OrderDate AS DATE) as OrderDate,
     p.ProductID,
     p.Name AS ProductName,
     sod.OrderQty AS Quantity,
@@ -10,9 +10,9 @@ SELECT
     (sod.OrderQty * sod.UnitPrice) AS LineTotal
 FROM Sales.SalesOrderHeader soh
 JOIN Sales.SalesOrderDetail sod ON soh.SalesOrderID = sod.SalesOrderID
-JOIN Sales.Customer c ON soh.CustomerID = c.CustomerID
 JOIN Production.Product p ON sod.ProductID = p.ProductID
-JOIN Sales.Store s ON c.StoreID = s.BusinessEntityID
+JOIN Purchasing.ProductVendor pv ON p.ProductID = pv.ProductID
+JOIN Purchasing.Vendor v ON pv.BusinessEntityID = v.BusinessEntityID
 
 
 SELECT * FROM vwCustomerOrders
