@@ -8,8 +8,11 @@ BEGIN
         RETURN 1
     END
 
-    -- If records exist, return the details
-    SELECT *
-    FROM OrderDetails
-    WHERE OrderID = @OrderID
+    ELSE        -- If records exist, return the details
+        BEGIN
+            SELECT *
+            FROM OrderDetails
+            WHERE OrderID = @OrderID
+        END
+    
 END
