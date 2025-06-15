@@ -17,19 +17,14 @@ BEGIN
         RETURN -1
     END
 
-    -- Perform delete
+
     DELETE FROM OrderDetails
     WHERE OrderID = @OrderID AND ProductID = @ProductID
 
-    -- Confirm deletion
+
     IF @@ROWCOUNT > 0
     BEGIN
         PRINT 'Order detail successfully deleted.'
         RETURN 0
-    END
-    ELSE
-    BEGIN
-        PRINT 'No rows deleted (unexpected case).'
-        RETURN -1
     END
 END
