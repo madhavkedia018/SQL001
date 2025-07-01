@@ -6,7 +6,6 @@ BEGIN
     DECLARE @RequestedSubject VARCHAR(11)
     DECLARE @CurrentSubject VARCHAR(11)
 
-
     DECLARE request_cursor CURSOR FOR SELECT StudentId, SubjectId FROM SubjectRequest
     OPEN request_cursor
 
@@ -18,7 +17,6 @@ BEGIN
         BEGIN
             SELECT @CurrentSubject = SubjectId FROM SubjectAllotments
             WHERE StudentId = @StudentId AND Is_Valid = 1
-
 
             IF @CurrentSubject IS NULL OR @CurrentSubject != @RequestedSubject
             BEGIN
