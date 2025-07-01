@@ -1,4 +1,4 @@
-CREATE PROCEDURE ProcessSubjectRequests
+CREATE PROCEDURE Process_Subject_Requests
 AS
 BEGIN
   
@@ -41,5 +41,5 @@ END
 
 
   
-EXEC ProcessSubjectRequests  
+EXEC Process_Subject_Requests  
 SELECT * FROM SubjectAllotments ORDER BY StudentId, Is_Valid DESC
