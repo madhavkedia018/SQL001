@@ -2,9 +2,9 @@ CREATE PROCEDURE ProcessSubjectRequests
 AS
 BEGIN
   
-    DECLARE @StudentId VARCHAR(20)
-    DECLARE @RequestedSubject VARCHAR(20)
-    DECLARE @CurrentSubject VARCHAR(20)
+    DECLARE @StudentId VARCHAR(13)
+    DECLARE @RequestedSubject VARCHAR(11)
+    DECLARE @CurrentSubject VARCHAR(11)
 
 
     DECLARE request_cursor CURSOR FOR SELECT StudentId, SubjectId FROM SubjectRequest
