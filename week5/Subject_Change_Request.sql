@@ -25,15 +25,13 @@ BEGIN
                 UPDATE SubjectAllotments SET Is_Valid = 0
                 WHERE StudentId = @StudentId AND Is_Valid = 1
 
-                INSERT INTO SubjectAllotments (StudentId, SubjectId, Is_Valid)
-                VALUES (@StudentId, @RequestedSubject, 1)
+                INSERT INTO SubjectAllotments VALUES (@StudentId, @RequestedSubject, 1)
             END
         END
   
         ELSE          -- for the student who is asking for subject allotment first time 
         BEGIN
-            INSERT INTO SubjectAllotments (StudentId, SubjectId, Is_Valid)
-            VALUES (@StudentId, @RequestedSubject, 1)
+            INSERT INTO SubjectAllotments VALUES (@StudentId, @RequestedSubject, 1)
         END
 
         FETCH NEXT FROM request_cursor INTO @StudentId, @RequestedSubject
@@ -42,3 +40,8 @@ BEGIN
     CLOSE request_cursor
     DEALLOCATE request_cursor
 END
+
+
+  
+EXEC ProcessSubjectRequests  
+SELECT * FROM SubjectAllotments ORDER BY StudentId, Is_Valid DESC
