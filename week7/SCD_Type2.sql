@@ -1,7 +1,7 @@
 CREATE PROCEDURE Load_SCD_Type_2
 AS
 BEGIN
-    DECLARE @Today DATE = GETDATE();
+    DECLARE @Today DATE = GETDATE()
 
     UPDATE DimCustomer
     SET EndDate = @Today, CurrentFlag = 0
