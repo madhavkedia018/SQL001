@@ -1,4 +1,4 @@
-CREATE OR ALTER PROCEDURE Load_SCD_Type_0
+CREATE PROCEDURE Load_SCD_Type_0
 AS
 BEGIN
     INSERT INTO DimCustomer (CustomerID, Name, Address, City, StartDate, EndDate, CurrentFlag)
