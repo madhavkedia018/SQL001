@@ -1,5 +1,25 @@
-CREATE PROCEDURE PopulateDimDate
-    @InputDate DATE
+CREATE TABLE DimDate (
+    SKDate INT PRIMARY KEY,
+    KeyDate VARCHAR(10),
+    Date VARCHAR(10),
+    CalendarDay INT,
+    CalendarMonth INT,
+    CalendarQuarter INT,
+    CalendarYear INT,
+    DayName VARCHAR(20),
+    DayNameShort VARCHAR(10),
+    DayNumberOfWeek INT,
+    DayNumberOfYear INT,
+    DaySuffix VARCHAR(10),
+    FiscalWeek INT,
+    FiscalPeriod INT,
+    FiscalQuarter VARCHAR(10),
+    FiscalYear INT,
+    FiscalYearPeriod VARCHAR(20)
+)
+
+
+CREATE PROCEDURE PopulateDimDate @InputDate DATE
 AS
 BEGIN
 
